@@ -10,7 +10,7 @@ class HelmetViolation:
         self.config = config
         self.missing_removal_thres = 150
         self.id_tracker = {}
-        self.load_model()
+        self.model = None
 
     def load_model(self) -> bool:
         try:
@@ -22,6 +22,10 @@ class HelmetViolation:
             return False
 
     def update(self, img, preds):
+        # Lazy load model
+        if self.model is None:
+            self.load_model()
+
         filter_vehicle = self.motorcycle_and_bicycle_filtering(preds)
         self.tracker_record_update(filter_vehicle)
         list_object_inference = self.get_object_inference(filter_vehicle)

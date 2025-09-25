@@ -16,8 +16,8 @@ from ..sort import Sort
 class VehicleDetection:
     def __init__(self, config: VehicleDetectionConfig):
         self.config = config
-        self.load_model()
-        self.load_tracker()
+        self.model = None
+        self.tracker = None
 
     def load_model(self):
         try:
@@ -55,6 +55,12 @@ class VehicleDetection:
             return False
 
     def update(self, img):
+        # Lazy load model and tracker
+        if self.model is None:
+            self.load_model()
+        if self.tracker is None:
+            self.load_tracker()
+
         # Detect vehicle object
         preds = self.predict(img)
 
