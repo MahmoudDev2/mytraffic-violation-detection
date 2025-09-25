@@ -1,8 +1,20 @@
-tvdr/core/__pycache__
-tvdr/interface/__pycache__
-tvdr/utils/__pycache__
-**__pycache__
+# Models
+models/
+model_v2.tar
+
+# YOLOv5
+yolov5_repo/
+
+# Uploads
+uploads/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# OS generated files
 .DS_Store
-.DS_Store?
-samples
-dataset
+._*
+Thumbs.db

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نتائج معالجة الفيديو</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 20px;
+            text-align: center;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        video {
+            width: 100%;
+            max-width: 760px;
+            margin-top: 20px;
+        }
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>اكتملت المعالجة</h1>
+        <p>يمكنك مشاهدة الفيديو المعالج أدناه أو تنزيله.</p>
+        <video controls>
+            <source src="{{ url_for('static', filename=filename) }}" type="video/mp4">
+            متصفحك لا يدعم علامة الفيديو.
+        </video>
+        <br>
+        <a href="{{ url_for('static', filename=filename) }}" download>تنزيل الفيديو</a>
+        <a href="{{ url_for('index') }}">العودة إلى الصفحة الرئيسية</a>
+    </div>
+</body>
+</html>
